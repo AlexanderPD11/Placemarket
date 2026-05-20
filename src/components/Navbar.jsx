@@ -22,6 +22,9 @@ function Navbar() {
         <Link to="/publicar" className="bg-blue-600 text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-blue-700 transition">
           Publicar lo que busco
         </Link>
+        <Link to="/demo" className="bg-gray-100 text-gray-700 text-sm font-semibold px-4 py-2 rounded-full hover:bg-gray-200 transition">
+  Ver Demo
+</Link>
       </div>
     </nav>
   )

@@ -18,6 +18,7 @@ import Notificaciones from './pages/Notificaciones'
 import AdminDashboard from './pages/AdminDashboard'
 import ReporteIngresos from './pages/ReporteIngresos'
 import CentroSoporte from './pages/CentroSoporte'
+import Demo from './pages/Demo'
 
 function LandingPage() {
   return (
@@ -49,6 +50,7 @@ function App() {
       <Route path="/admin" element={<AdminDashboard />} />
       <Route path="/admin/ingresos" element={<ReporteIngresos />} />
       <Route path="/admin/soporte" element={<CentroSoporte />} />
+      <Route path="/demo" element={<Demo />} />
     </Routes>
   )
 }
