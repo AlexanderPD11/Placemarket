@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ShoppingBag, Search, CheckCircle, Calendar, FileText, Home } from 'lucide-react'
+import { ShoppingBag, Search, CheckCircle, Calendar, FileText, Home, Flag } from 'lucide-react'
 
 function FinalizacionTrato() {
   const [rating, setRating] = useState(4)
@@ -30,17 +30,21 @@ function FinalizacionTrato() {
           <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto">
             <CheckCircle size={40} className="text-green-500" strokeWidth={1.5} />
           </div>
-          <div className="absolute -top-1 -right-1 w-4 h-4 bg-yellow-400 rounded-full"></div>
-          <div className="absolute -bottom-1 -left-2 w-3 h-3 bg-blue-400 rounded-full"></div>
         </div>
 
-        <h1 className="text-4xl font-black text-gray-900 mb-3">Trato Finalizado!</h1>
+        <h1 className="text-4xl font-black text-gray-900 mb-3">Contacto Iniciado!</h1>
         <p className="text-gray-500 max-w-sm mx-auto leading-relaxed">
-          La transaccion se ha completado correctamente. Ambas partes han confirmado la entrega y recepcion.
+          Has iniciado contacto con el vendedor. A partir de aqui, la negociacion y proceso de compra es entre tu y el vendedor directamente.
         </p>
 
-        <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm mt-8 text-left">
-          <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-4">Resumen de la Operacion</p>
+        <div className="bg-yellow-50 border border-yellow-200 rounded-2xl p-4 mt-6 text-left">
+          <p className="text-sm text-yellow-700 leading-relaxed">
+            ⚠️ <strong>Aviso importante:</strong> Placemarket actua como puente de conexion. El proceso de pago, entrega y garantia del producto o servicio es responsabilidad exclusiva del vendedor. En caso de inconvenientes puedes reportar al vendedor.
+          </p>
+        </div>
+
+        <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm mt-6 text-left">
+          <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-4">Resumen de la Conexion</p>
           <div className="flex items-center gap-4">
             <img
               src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=200&q=80"
@@ -49,22 +53,18 @@ function FinalizacionTrato() {
             />
             <div className="flex-1">
               <h3 className="font-black text-gray-900">iPhone 13 Pro Max - 256GB</h3>
-              <p className="text-2xl font-black text-blue-600 mt-1">$850.00</p>
+              <p className="text-sm text-gray-500 mt-1">Vendedor: <span className="text-blue-600 font-semibold">Carlos M.</span></p>
               <p className="text-xs text-gray-400 flex items-center gap-1 mt-1">
                 <Calendar size={12} /> 24 de Oct, 2023
               </p>
             </div>
-            <span className="bg-green-100 text-green-600 text-xs font-bold px-3 py-1 rounded-full">PAGADO</span>
           </div>
-          <button className="flex items-center gap-2 text-gray-500 text-sm mt-4 hover:text-blue-600 transition">
-            <FileText size={14} /> Ver detalles
-          </button>
         </div>
 
         <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm mt-4 text-left">
           <h2 className="text-xl font-black text-gray-900 text-center mb-1">Califica tu experiencia</h2>
           <p className="text-sm text-gray-400 text-center mb-6">
-            Como fue el trato con <span className="text-blue-600 font-semibold">Carlos M.</span>?
+            Como fue el contacto con <span className="text-blue-600 font-semibold">Carlos M.</span> a traves de Placemarket?
           </p>
 
           <div className="flex justify-center gap-3 mb-6">
@@ -84,7 +84,7 @@ function FinalizacionTrato() {
             <textarea
               value={resena}
               onChange={(e) => setResena(e.target.value)}
-              placeholder="Excelente vendedor, el producto esta impecable y la comunicacion fue rapida..."
+              placeholder="Como fue la comunicacion con el vendedor? Fue rapido en responder?"
               rows={4}
               className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-blue-400 transition resize-none"
             />
@@ -96,15 +96,15 @@ function FinalizacionTrato() {
         </div>
 
         <div className="flex justify-between items-center mt-8">
-          <button className="flex items-center gap-2 text-gray-500 text-sm hover:text-blue-600 transition">
-            <FileText size={14} /> Ver Recibo de Operacion
+          <button className="flex items-center gap-2 text-red-500 text-sm hover:underline transition">
+            <Flag size={14} /> Reportar vendedor
           </button>
           <Link to="/" className="flex items-center gap-2 border border-gray-200 text-gray-700 px-5 py-2.5 rounded-full text-sm font-semibold hover:border-blue-400 transition">
             <Home size={14} /> Volver al Inicio
           </Link>
         </div>
 
-        <p className="text-xs text-gray-400 mt-10">© 2025 Placemarket - Tu mercado seguro</p>
+        <p className="text-xs text-gray-400 mt-10">© 2025 Placemarket - Conectando compradores y vendedores</p>
       </div>
     </div>
   )

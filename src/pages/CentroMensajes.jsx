@@ -32,7 +32,9 @@ function CentroMensajes() {
           <Search size={14} className="text-gray-400" />
           <input type="text" placeholder="Buscar mensajes o tratos..." className="bg-transparent text-sm outline-none flex-1" />
         </div>
-        <button className="bg-blue-600 text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-blue-700 transition">Finalizar Trato</button>
+      <div className="bg-yellow-50 border border-yellow-200 px-4 py-2 rounded-full">
+  <p className="text-xs text-yellow-700 font-medium">⚠️ A partir de aquí el vendedor se comunica directamente contigo</p>
+</div>
       </nav>
 
       <div className="flex flex-1 overflow-hidden" style={{ height: 'calc(100vh - 64px)' }}>
@@ -103,19 +105,24 @@ function CentroMensajes() {
               </div>
             ))}
 
-            <div className="flex justify-center">
-              <div className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm text-center max-w-sm">
-                <div className="bg-blue-50 w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <ShoppingBag size={18} className="text-blue-600" />
-                </div>
-                <p className="font-bold text-gray-900 text-sm mb-1">Propuesta de Precio Recibida</p>
-                <p className="text-2xl font-black text-blue-600 mb-3">$15,250.00 USD</p>
-                <div className="flex gap-2">
-                  <button className="flex-1 bg-blue-600 text-white py-2 rounded-xl text-sm font-semibold hover:bg-blue-700 transition">Aceptar Oferta</button>
-                  <button className="flex-1 border border-gray-200 text-gray-600 py-2 rounded-xl text-sm font-semibold hover:border-gray-300 transition">Rechazar</button>
-                </div>
-              </div>
-            </div>
+           <div className="flex justify-center">
+  <div className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm text-center max-w-sm">
+    <div className="bg-blue-50 w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-3">
+      <ShoppingBag size={18} className="text-blue-600" />
+    </div>
+    <p className="font-bold text-gray-900 text-sm mb-1">Propuesta de Precio Recibida</p>
+    <p className="text-2xl font-black text-blue-600 mb-3">$15,250.00 USD</p>
+    <div className="bg-yellow-50 border border-yellow-100 rounded-xl p-3 mb-3">
+      <p className="text-xs text-yellow-700 leading-relaxed">
+        ⚠️ Placemarket no interviene en el proceso de pago ni entrega. Coordina directamente con el vendedor.
+      </p>
+    </div>
+    <div className="flex gap-2">
+      <button className="flex-1 bg-blue-600 text-white py-2 rounded-xl text-sm font-semibold hover:bg-blue-700 transition">Contactar Vendedor</button>
+      <button className="flex-1 border border-gray-200 text-gray-600 py-2 rounded-xl text-sm font-semibold hover:border-gray-300 transition">Rechazar</button>
+    </div>
+  </div>
+</div>
           </div>
 
           <div className="px-6 py-4 border-t border-gray-100 shrink-0">

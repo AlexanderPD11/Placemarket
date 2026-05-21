@@ -152,18 +152,27 @@ function PerfilVendedor() {
           <button className="w-full text-center text-blue-600 text-sm font-semibold mt-4 hover:underline">Ver todas las reseñas (45)</button>
         </div>
 
-        <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="bg-blue-50 p-2 rounded-xl">
-              <Shield size={20} className="text-blue-600" />
-            </div>
-            <div>
-              <p className="font-bold text-gray-900 text-sm">Compra Protegida</p>
-              <p className="text-xs text-gray-500">Tu dinero esta seguro. No liberamos el pago al vendedor hasta que confirmes la recepcion de tu pedido.</p>
-            </div>
-          </div>
-          <button className="border border-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-semibold hover:border-blue-400 transition whitespace-nowrap ml-4">Saber mas</button>
-        </div>
+        <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+  <div className="flex items-center justify-between mb-3">
+    <div className="flex items-center gap-3">
+      <div className="bg-blue-50 p-2 rounded-xl">
+        <Shield size={20} className="text-blue-600" />
+      </div>
+      <div>
+        <p className="font-bold text-gray-900 text-sm">Como funciona Placemarket</p>
+        <p className="text-xs text-gray-500">Somos el puente entre compradores y vendedores. El proceso de venta es responsabilidad directa del vendedor.</p>
+      </div>
+    </div>
+  </div>
+  <div className="bg-yellow-50 border border-yellow-100 rounded-xl p-4 mb-4">
+    <p className="text-xs text-yellow-700 leading-relaxed">
+      ⚠️ <strong>Aviso importante:</strong> Placemarket conecta compradores con vendedores verificados. Una vez iniciado el contacto, la negociacion y entrega es responsabilidad exclusiva del vendedor. En caso de inconvenientes, puedes reportar al vendedor para que investiguemos.
+    </p>
+  </div>
+  <button className="flex items-center gap-2 border border-red-200 text-red-500 px-4 py-2 rounded-full text-sm font-semibold hover:bg-red-50 transition">
+    ⚑ Reportar este vendedor
+  </button>
+</div>
 
         <div className="text-center mt-8 text-xs text-gray-400">
           © 2025 Placemarket. Todos los derechos reservados.

@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ShoppingBag, Search, Bell, Settings, Plus, Filter, Mail, Star } from 'lucide-react'
+import { ShoppingBag, Search, Bell, Settings, Plus, Filter, Mail, Star, Users } from 'lucide-react'
 
 const stats = [
   { label: 'Pedidos Activos', value: '12', sub: '+2 esta semana', icon: ShoppingBag, color: 'text-blue-600' },
   { label: 'Ofertas Recibidas', value: '48', sub: '4.0 promedio por pedido', icon: Mail, color: 'text-blue-600' },
-  { label: 'Presupuesto Total', value: '$4,500.00', sub: 'Proyectado Mensual', icon: ShoppingBag, color: 'text-blue-600' },
+  { label: 'Vendedores Contactados', value: '8', sub: 'Este mes', icon: Users, color: 'text-blue-600' },
 ]
 
 const pedidos = [
@@ -170,8 +170,13 @@ function GestionOfertas() {
                         </div>
                         <p className="text-xs text-gray-500 mb-3 italic">"{oferta.descripcion}"</p>
                         <div className="flex gap-2">
-                          <button className="flex-1 bg-blue-600 text-white py-2 rounded-xl text-sm font-semibold hover:bg-blue-700 transition">Aceptar Oferta</button>
-                          <button className="flex-1 border border-blue-600 text-blue-600 py-2 rounded-xl text-sm font-semibold hover:bg-blue-50 transition">Chat con Vendedor</button>
+                          <div className="bg-yellow-50 border border-yellow-100 rounded-xl p-3 mb-2">
+  <p className="text-xs text-yellow-700">⚠️ Placemarket no interviene en el proceso de pago ni entrega. Coordina directamente con el vendedor.</p>
+</div>
+<div className="flex gap-2">
+  <button className="flex-1 bg-blue-600 text-white py-2 rounded-xl text-sm font-semibold hover:bg-blue-700 transition">Contactar Vendedor</button>
+  <button className="flex-1 border border-blue-600 text-blue-600 py-2 rounded-xl text-sm font-semibold hover:bg-blue-50 transition">Ver Perfil</button>
+</div>
                         </div>
                       </div>
                     ))}
