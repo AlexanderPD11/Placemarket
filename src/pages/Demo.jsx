@@ -11,14 +11,18 @@ const pantallas = [
       { nombre: 'Mis Publicaciones', descripcion: 'Historial de todas las solicitudes', ruta: '/mis-publicaciones', icon: FileText, color: 'bg-pink-50 text-pink-600' },
     ]
   },
-  {
-    categoria: '🏪 Experiencia del Vendedor',
-    items: [
-      { nombre: 'Muro de Solicitudes', descripcion: 'Feed de necesidades de compradores', ruta: '/muro', icon: Store, color: 'bg-orange-50 text-orange-600' },
-      { nombre: 'Tienda de Creditos', descripcion: 'Sistema de creditos para ofertar', ruta: '/creditos', icon: CreditCard, color: 'bg-yellow-50 text-yellow-600' },
-      { nombre: 'Perfil Vendedor', descripcion: 'Perfil publico con reputacion y resenas', ruta: '/perfil', icon: User, color: 'bg-green-50 text-green-600' },
-    ]
-  },
+ {
+  categoria: '🏪 Experiencia del Vendedor',
+  items: [
+    { nombre: 'Muro de Solicitudes', descripcion: 'Feed de necesidades de compradores', ruta: '/muro', icon: Store, color: 'bg-orange-50 text-orange-600' },
+
+    { nombre: 'Tienda de Creditos', descripcion: 'Sistema de creditos para ofertar', ruta: '/creditos', icon: CreditCard, color: 'bg-yellow-50 text-yellow-600' },
+
+    { nombre: 'Perfil Vendedor', descripcion: 'Perfil publico con reputacion y resenas', ruta: '/perfil', icon: User, color: 'bg-green-50 text-green-600' },
+
+    { nombre: 'Centro de Verificacion', descripcion: 'Sistema de niveles y verificacion profesional del vendedor', ruta: '/verificacion', icon: CheckCircle, color: 'bg-blue-50 text-blue-600' },
+  ]
+},
   {
     categoria: '💬 Negociacion y Cierre',
     items: [

@@ -19,6 +19,7 @@ import AdminDashboard from './pages/AdminDashboard'
 import ReporteIngresos from './pages/ReporteIngresos'
 import CentroSoporte from './pages/CentroSoporte'
 import Demo from './pages/Demo'
+import VerificacionVendedor from './pages/VerificacionVendedor'
 
 function LandingPage() {
   return (
@@ -51,6 +52,7 @@ function App() {
       <Route path="/admin/ingresos" element={<ReporteIngresos />} />
       <Route path="/admin/soporte" element={<CentroSoporte />} />
       <Route path="/demo" element={<Demo />} />
+     <Route path="/verificacion" element={<VerificacionVendedor />} />
     </Routes>
   )
 }
