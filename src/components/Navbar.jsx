@@ -1,30 +1,187 @@
 import { Link } from 'react-router-dom'
-import { ShoppingBag } from 'lucide-react'
+import {
+  ShoppingBag,
+  Bell,
+  User,
+} from 'lucide-react'
+
+import Button from './ui/Button'
 
 function Navbar() {
   return (
-    <nav className="fixed top-0 w-full bg-white border-b border-gray-100 z-50 px-8 py-4 flex justify-between items-center">
-      <div className="flex items-center gap-8">
-        <Link to="/" className="flex items-center gap-2">
-          <div className="bg-blue-600 text-white p-1.5 rounded-lg">
-            <ShoppingBag size={18} />
+    <nav
+      className="
+        fixed
+        top-0
+        left-0
+        w-full
+        z-50
+        bg-white/80
+        backdrop-blur-xl
+        border-b
+        border-gray-200
+      "
+    >
+      <div
+        className="
+          max-w-7xl
+          mx-auto
+          px-6
+          py-4
+          flex
+          items-center
+          justify-between
+        "
+      >
+
+        {/* LEFT */}
+        <div className="flex items-center gap-10">
+
+          {/* LOGO */}
+          <Link
+            to="/"
+            className="flex items-center gap-3"
+          >
+
+            <div
+              className="
+                bg-gradient-to-br
+                from-blue-600
+                to-cyan-500
+                p-2.5
+                rounded-2xl
+                shadow-lg
+                shadow-blue-200
+              "
+            >
+              <ShoppingBag
+                size={20}
+                className="text-white"
+              />
+            </div>
+
+            <div>
+              <h1 className="text-gray-900 font-bold text-xl">
+                Placemarket
+              </h1>
+
+              <p className="text-gray-500 text-xs">
+                Marketplace inteligente
+              </p>
+            </div>
+
+          </Link>
+
+          {/* LINKS */}
+          <div className="hidden lg:flex items-center gap-8">
+
+            <a
+              href="#como-funciona"
+              className="
+                text-gray-600
+                hover:text-blue-600
+                transition
+                text-sm
+                font-medium
+              "
+            >
+              Cómo funciona
+            </a>
+
+            <a
+              href="#categorias"
+              className="
+                text-gray-600
+                hover:text-blue-600
+                transition
+                text-sm
+                font-medium
+              "
+            >
+              Categorías
+            </a>
+
+            <Link
+              to="/muro"
+              className="
+                text-gray-600
+                hover:text-blue-600
+                transition
+                text-sm
+                font-medium
+              "
+            >
+              Solicitudes
+            </Link>
+
           </div>
-          <span className="text-lg font-bold text-gray-900">Placemarket</span>
-        </Link>
-        <div className="hidden md:flex items-center gap-6">
-          <a href="#como-funciona" className="text-sm text-gray-600 hover:text-blue-600 transition">Cómo funciona</a>
-          <a href="#categorias" className="text-sm text-gray-600 hover:text-blue-600 transition">Categorías</a>
-          <Link to="/muro" className="text-sm text-gray-600 hover:text-blue-600 transition">Vendedores</Link>
         </div>
-      </div>
-      <div className="flex items-center gap-3">
-        <a href="#" className="text-sm text-gray-600 hover:text-blue-600 transition font-medium">Iniciar sesión</a>
-        <Link to="/publicar" className="bg-blue-600 text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-blue-700 transition">
-          Publicar lo que busco
-        </Link>
-        <Link to="/demo" className="bg-gray-100 text-gray-700 text-sm font-semibold px-4 py-2 rounded-full hover:bg-gray-200 transition">
-  Ver Demo
-</Link>
+
+        {/* RIGHT */}
+        <div className="flex items-center gap-4">
+
+          {/* ICONS */}
+          <div className="hidden md:flex items-center gap-3">
+
+            <button
+              className="
+                bg-gray-100
+                border
+                border-gray-200
+                p-2.5
+                rounded-xl
+                hover:bg-gray-200
+                transition
+              "
+            >
+              <Bell
+                size={18}
+                className="text-gray-700"
+              />
+            </button>
+
+            <button
+              className="
+                bg-gray-100
+                border
+                border-gray-200
+                p-2.5
+                rounded-xl
+                hover:bg-gray-200
+                transition
+              "
+            >
+              <User
+                size={18}
+                className="text-gray-700"
+              />
+            </button>
+
+          </div>
+
+          {/* LOGIN */}
+          <button
+            className="
+              hidden
+              md:block
+              text-gray-600
+              hover:text-blue-600
+              text-sm
+              font-medium
+              transition
+            "
+          >
+            Iniciar sesión
+          </button>
+
+          {/* CTA */}
+          <Link to="/publicar">
+            <Button>
+              Publicar necesidad
+            </Button>
+          </Link>
+
+        </div>
       </div>
     </nav>
   )

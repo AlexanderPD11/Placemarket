@@ -1,187 +1,381 @@
+import {
+  Star,
+  MapPin,
+  ShieldCheck,
+  Clock3,
+  Briefcase,
+  MessageSquare,
+  CheckCircle,
+  Award,
+  ShoppingBag
+} from 'lucide-react'
+
 import { Link } from 'react-router-dom'
-import { ShoppingBag, Search, CheckCircle, Star, Shield } from 'lucide-react'
 
-const reseñas = [
-  {
-    iniciales: 'RL',
-    nombre: 'Ricardo Lopez',
-    rating: 5,
-    tiempo: 'Hace 2 semanas',
-    texto: 'Excelente servicio. Juan fue muy profesional y la entrega de los insumos se realizo incluso antes de lo acordado. El embalaje fue impecable.'
-  },
-  {
-    iniciales: 'MC',
-    nombre: 'Mariana Costa',
-    rating: 5,
-    tiempo: 'Hace 1 mes',
-    texto: 'Buena comunicacion. Hubo un pequeno retraso por parte del transporte pero el vendedor siempre estuvo en contacto y resolvio mis dudas rapidamente.'
-  },
-  {
-    iniciales: 'JS',
-    nombre: 'Jorge Sanchez',
-    rating: 4,
-    tiempo: 'Hace 2 meses',
-    texto: 'El mejor vendedor con el que he trabajado en la plataforma. Precios competitivos y calidad certificada. Muy recomendado para compras industriales.'
-  },
-]
-
-const distribucion = [
-  { estrellas: 5, porcentaje: 80 },
-  { estrellas: 4, porcentaje: 15 },
-  { estrellas: 3, porcentaje: 3 },
-  { estrellas: 2, porcentaje: 0 },
-  { estrellas: 1, porcentaje: 2 },
-]
 function PerfilVendedor() {
   return (
     <div className="min-h-screen bg-gray-50">
-      <nav className="bg-white border-b border-gray-100 px-8 py-4 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2">
-          <div className="bg-blue-600 text-white p-1.5 rounded-lg"><ShoppingBag size={16} /></div>
-          <span className="font-black text-gray-900">Placemarket</span>
+
+      {/* NAVBAR */}
+      <nav className="bg-white border-b border-gray-100 px-6 py-4 flex items-center justify-between">
+
+        <Link to="/" className="flex items-center gap-3">
+
+          <div className="bg-blue-600 text-white p-2 rounded-xl">
+            <ShoppingBag size={18} />
+          </div>
+
+          <div>
+            <span className="font-black text-gray-900 text-lg">
+              Placemarket
+            </span>
+
+            <p className="text-xs text-gray-400">
+              Perfil Profesional
+            </p>
+          </div>
         </Link>
-        <div className="flex items-center gap-3 bg-gray-100 rounded-full px-4 py-2 w-64">
-          <Search size={16} className="text-gray-400" />
-          <input type="text" placeholder="Buscar vendedores..." className="bg-transparent text-sm outline-none flex-1" />
-        </div>
-        <div className="flex gap-6 text-sm text-gray-500">
-          <a href="#" className="hover:text-blue-600">Explorar</a>
-          <a href="#" className="hover:text-blue-600">Mis Ofertas</a>
-          <a href="#" className="hover:text-blue-600">Mensajes</a>
-          <button className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-blue-700 transition">Mi Cuenta</button>
-        </div>
+
+      
       </nav>
 
-      <div className="max-w-3xl mx-auto px-6 py-10">
-        <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm mb-6">
-          <div className="flex items-start justify-between">
-            <div className="flex items-start gap-4">
-              <div className="relative">
-                <div className="w-20 h-20 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center text-white text-2xl font-black">JP</div>
-                <div className="absolute -bottom-1 -right-1 bg-blue-600 rounded-full p-1">
-                  <CheckCircle size={12} className="text-white" />
-                </div>
-              </div>
-              <div>
-                <h1 className="text-2xl font-black text-gray-900">Juan Perez - Insumos Industriales</h1>
-                <div className="flex items-center gap-2 mt-1">
-                  <span className="text-blue-600 text-sm font-semibold flex items-center gap-1">
-                    <CheckCircle size={14} /> Vendedor Verificado
-                  </span>
-                  <span className="text-gray-400 text-sm">• Miembro desde hace 3 anos</span>
-                </div>
-                <div className="flex gap-2 mt-3">
-                  {['Equipamiento Pesado', 'Logistica Nacional', 'Ventas B2B'].map((tag) => (
-                    <span key={tag} className="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full">{tag}</span>
-                  ))}
-                </div>
-              </div>
-            </div>
-            <div className="flex gap-2">
-              <button className="border border-gray-200 text-gray-700 px-5 py-2 rounded-full text-sm font-semibold hover:border-blue-400 transition">Contactar</button>
-              <button className="bg-blue-600 text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-blue-700 transition">Aceptar Oferta</button>
-            </div>
-          </div>
-        </div>
+      <div className="max-w-7xl mx-auto px-6 py-10">
 
-        <div className="grid grid-cols-3 gap-4 mb-6">
-          {[
-            { label: 'Ofertas ganadas', value: '124', sub: '+12 este mes', icon: ShoppingBag },
-            { label: 'Calificacion', value: '4.8/5', sub: 'Basado en 45 reseñas', icon: Star },
-            { label: 'Respuesta', value: '< 2 horas', sub: 'Muy alta disponibilidad', icon: Shield },
-          ].map((stat) => {
-            const Icon = stat.icon
-            return (
-              <div key={stat.label} className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
-                <div className="flex items-center gap-2 mb-2">
-                  <Icon size={16} className="text-blue-600" strokeWidth={1.5} />
-                  <p className="text-xs text-gray-400">{stat.label}</p>
-                </div>
-                <p className="text-2xl font-black text-gray-900">{stat.value}</p>
-                <p className="text-xs text-blue-500 mt-1">{stat.sub}</p>
-              </div>
-            )
-          })}
-        </div>
+        {/* HEADER */}
+        <div className="bg-white rounded-3xl border border-gray-100 p-8 shadow-sm">
 
-        <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm mb-6">
-          <h2 className="text-lg font-black text-gray-900 mb-6">Resenas de compradores</h2>
-          <div className="flex gap-8 mb-6">
-            <div className="text-center">
-              <p className="text-5xl font-black text-gray-900">4.8</p>
-              <div className="flex gap-1 justify-center mt-2">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={16} className={i < 4 ? 'text-yellow-400 fill-yellow-400' : 'text-gray-200 fill-gray-200'} />
-                ))}
-              </div>
-              <p className="text-xs text-gray-400 mt-1">45 reseñas totales</p>
+          <div className="flex flex-col lg:flex-row gap-8">
+
+            {/* FOTO */}
+            <div className="shrink-0">
+
+              <img
+                src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80"
+                alt="Vendedor"
+                className="w-40 h-40 rounded-3xl object-cover"
+              />
             </div>
-            <div className="flex-1 space-y-2">
-              {distribucion.map((d) => (
-                <div key={d.estrellas} className="flex items-center gap-3">
-                  <span className="text-xs text-gray-500 w-2">{d.estrellas}</span>
-                  <div className="flex-1 bg-gray-100 rounded-full h-2">
-                    <div className="bg-blue-600 h-2 rounded-full" style={{ width: `${d.porcentaje}%` }} />
+
+            {/* INFO */}
+            <div className="flex-1">
+
+              <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+
+                <div>
+
+                  <div className="flex items-center gap-3 flex-wrap">
+
+                    <h1 className="text-4xl font-black text-gray-900">
+                      Carlos Mendoza
+                    </h1>
+
+                    <span className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-xs font-bold">
+                      TOP VENDEDOR
+                    </span>
                   </div>
-                  <span className="text-xs text-gray-400 w-6">{d.porcentaje}%</span>
+
+                  <p className="text-gray-500 mt-3 text-lg">
+                    Especialista en vehículos premium y tecnología.
+                  </p>
+
+                  <div className="flex flex-wrap items-center gap-5 mt-5 text-sm text-gray-500">
+
+                    <span className="flex items-center gap-1">
+                      <MapPin size={15} />
+                      Santo Domingo, República Dominicana
+                    </span>
+
+                    <span className="flex items-center gap-1">
+                      <Clock3 size={15} />
+                      Responde en menos de 10 min
+                    </span>
+
+                    <span className="flex items-center gap-1">
+                      <ShieldCheck size={15} />
+                      Verificado
+                    </span>
+                  </div>
                 </div>
-              ))}
-            </div>
-          </div>
-          <div className="space-y-4">
-            {reseñas.map((r, i) => (
-              <div key={i} className="border-t border-gray-50 pt-4">
-                <div className="flex justify-between items-start mb-2">
-                  <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 bg-gray-200 rounded-full flex items-center justify-center text-xs font-bold text-gray-600">{r.iniciales}</div>
-                    <div>
-                      <p className="text-sm font-bold text-gray-900">{r.nombre}</p>
-                      <div className="flex gap-0.5">
-                        {[...Array(5)].map((_, j) => (
-                          <Star key={j} size={10} className={j < r.rating ? 'text-yellow-400 fill-yellow-400' : 'text-gray-200 fill-gray-200'} />
-                        ))}
-                      </div>
+
+                {/* RATING */}
+                <div className="bg-gray-50 rounded-3xl p-6 min-w-[220px]">
+
+                  <div className="flex items-center gap-2 mb-2">
+
+                    <Star
+                      className="text-yellow-400 fill-yellow-400"
+                      size={22}
+                    />
+
+                    <span className="text-3xl font-black text-gray-900">
+                      4.9
+                    </span>
+                  </div>
+
+                  <p className="text-sm text-gray-500">
+                    Basado en 248 opiniones verificadas
+                  </p>
+
+                  <div className="mt-5 space-y-2">
+
+                    <div className="flex justify-between text-sm">
+                      <span className="text-gray-500">
+                        Entregas exitosas
+                      </span>
+
+                      <span className="font-bold text-gray-900">
+                        98%
+                      </span>
+                    </div>
+
+                    <div className="flex justify-between text-sm">
+                      <span className="text-gray-500">
+                        Tiempo respuesta
+                      </span>
+
+                      <span className="font-bold text-gray-900">
+                        8 min
+                      </span>
                     </div>
                   </div>
-                  <span className="text-xs text-gray-400">{r.tiempo}</span>
                 </div>
-                <p className="text-sm text-gray-500 leading-relaxed">{r.texto}</p>
               </div>
-            ))}
+
+              {/* STATS */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+
+                <div className="bg-gray-50 rounded-2xl p-5">
+                  <p className="text-sm text-gray-400">
+                    Ventas
+                  </p>
+
+                  <h3 className="text-2xl font-black text-gray-900 mt-1">
+                    1,284
+                  </h3>
+                </div>
+
+                <div className="bg-gray-50 rounded-2xl p-5">
+                  <p className="text-sm text-gray-400">
+                    Clientes
+                  </p>
+
+                  <h3 className="text-2xl font-black text-gray-900 mt-1">
+                    892
+                  </h3>
+                </div>
+
+                <div className="bg-gray-50 rounded-2xl p-5">
+                  <p className="text-sm text-gray-400">
+                    Ofertas activas
+                  </p>
+
+                  <h3 className="text-2xl font-black text-gray-900 mt-1">
+                    54
+                  </h3>
+                </div>
+
+                <div className="bg-gray-50 rounded-2xl p-5">
+                  <p className="text-sm text-gray-400">
+                    Experiencia
+                  </p>
+
+                  <h3 className="text-2xl font-black text-gray-900 mt-1">
+                    6 años
+                  </h3>
+                </div>
+              </div>
+            </div>
           </div>
-          <button className="w-full text-center text-blue-600 text-sm font-semibold mt-4 hover:underline">Ver todas las reseñas (45)</button>
         </div>
 
-        <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
-  <div className="flex items-center justify-between mb-3">
-    <div className="flex items-center gap-3">
-      <div className="bg-blue-50 p-2 rounded-xl">
-        <Shield size={20} className="text-blue-600" />
-      </div>
-      <div>
-        <p className="font-bold text-gray-900 text-sm">Como funciona Placemarket</p>
-        <p className="text-xs text-gray-500">Somos el puente entre compradores y vendedores. El proceso de venta es responsabilidad directa del vendedor.</p>
-      </div>
-    </div>
-  </div>
-  <div className="bg-yellow-50 border border-yellow-100 rounded-xl p-4 mb-4">
-    <p className="text-xs text-yellow-700 leading-relaxed">
-      ⚠️ <strong>Aviso importante:</strong> Placemarket conecta compradores con vendedores verificados. Una vez iniciado el contacto, la negociacion y entrega es responsabilidad exclusiva del vendedor. En caso de inconvenientes, puedes reportar al vendedor para que investiguemos.
-    </p>
-  </div>
-  <button className="flex items-center gap-2 border border-red-200 text-red-500 px-4 py-2 rounded-full text-sm font-semibold hover:bg-red-50 transition">
-    ⚑ Reportar este vendedor
-  </button>
-</div>
+        {/* CONTENIDO */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-8">
 
-        <div className="text-center mt-8 text-xs text-gray-400">
-          © 2025 Placemarket. Todos los derechos reservados.
-          <span className="mx-2">·</span>
-          <a href="#" className="hover:text-blue-600">Privacidad</a>
-          <span className="mx-2">·</span>
-          <a href="#" className="hover:text-blue-600">Terminos</a>
-          <span className="mx-2">·</span>
-          <a href="#" className="hover:text-blue-600">Soporte</a>
+          {/* IZQUIERDA */}
+          <div className="lg:col-span-2 space-y-6">
+
+            {/* SOBRE MI */}
+            <div className="bg-white rounded-3xl border border-gray-100 p-8 shadow-sm">
+
+              <h2 className="text-2xl font-black text-gray-900 mb-4">
+                Sobre mí
+              </h2>
+
+              <p className="text-gray-500 leading-relaxed">
+                Profesional especializado en compra, venta y localización de
+                vehículos premium y productos tecnológicos. Ayudo a clientes
+                a encontrar exactamente lo que necesitan al mejor precio y
+                con procesos rápidos y seguros.
+              </p>
+            </div>
+
+            {/* EXPERIENCIA */}
+            <div className="bg-white rounded-3xl border border-gray-100 p-8 shadow-sm">
+
+              <div className="flex items-center gap-3 mb-6">
+
+                <Briefcase className="text-blue-600" />
+
+                <h2 className="text-2xl font-black text-gray-900">
+                  Experiencia
+                </h2>
+              </div>
+
+              <div className="space-y-5">
+
+                <div className="border border-gray-100 rounded-2xl p-5">
+
+                  <div className="flex justify-between items-start">
+
+                    <div>
+                      <h3 className="font-bold text-gray-900">
+                        Consultor Automotriz Premium
+                      </h3>
+
+                      <p className="text-sm text-gray-500 mt-1">
+                        AutoElite Group
+                      </p>
+                    </div>
+
+                    <span className="text-sm text-gray-400">
+                      2021 - Actualidad
+                    </span>
+                  </div>
+                </div>
+
+                <div className="border border-gray-100 rounded-2xl p-5">
+
+                  <div className="flex justify-between items-start">
+
+                    <div>
+                      <h3 className="font-bold text-gray-900">
+                        Ejecutivo Comercial
+                      </h3>
+
+                      <p className="text-sm text-gray-500 mt-1">
+                        Luxury Motors
+                      </p>
+                    </div>
+
+                    <span className="text-sm text-gray-400">
+                      2018 - 2021
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* REVIEWS */}
+            <div className="bg-white rounded-3xl border border-gray-100 p-8 shadow-sm">
+
+              <div className="flex items-center gap-3 mb-6">
+
+                <MessageSquare className="text-blue-600" />
+
+                <h2 className="text-2xl font-black text-gray-900">
+                  Opiniones
+                </h2>
+              </div>
+
+              <div className="space-y-5">
+
+                <div className="border border-gray-100 rounded-2xl p-5">
+
+                  <div className="flex items-center justify-between">
+
+                    <h4 className="font-bold text-gray-900">
+                      María González
+                    </h4>
+
+                    <div className="flex items-center gap-1">
+                      <Star className="text-yellow-400 fill-yellow-400" size={16} />
+                      <Star className="text-yellow-400 fill-yellow-400" size={16} />
+                      <Star className="text-yellow-400 fill-yellow-400" size={16} />
+                      <Star className="text-yellow-400 fill-yellow-400" size={16} />
+                      <Star className="text-yellow-400 fill-yellow-400" size={16} />
+                    </div>
+                  </div>
+
+                  <p className="text-gray-500 text-sm mt-3 leading-relaxed">
+                    Excelente experiencia. Muy profesional y rápido.
+                  </p>
+                </div>
+
+                <div className="border border-gray-100 rounded-2xl p-5">
+
+                  <div className="flex items-center justify-between">
+
+                    <h4 className="font-bold text-gray-900">
+                      José Ramírez
+                    </h4>
+
+                    <div className="flex items-center gap-1">
+                      <Star className="text-yellow-400 fill-yellow-400" size={16} />
+                      <Star className="text-yellow-400 fill-yellow-400" size={16} />
+                      <Star className="text-yellow-400 fill-yellow-400" size={16} />
+                      <Star className="text-yellow-400 fill-yellow-400" size={16} />
+                      <Star className="text-yellow-400 fill-yellow-400" size={16} />
+                    </div>
+                  </div>
+
+                  <p className="text-gray-500 text-sm mt-3 leading-relaxed">
+                    Encontró exactamente el vehículo que necesitaba.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* DERECHA */}
+          <div className="space-y-6">
+
+            {/* BADGES */}
+            <div className="bg-white rounded-3xl border border-gray-100 p-6 shadow-sm">
+
+              <h2 className="text-xl font-black text-gray-900 mb-5">
+                Logros
+              </h2>
+
+              <div className="space-y-4">
+
+                <div className="flex items-center gap-3">
+
+                  <div className="bg-blue-100 p-3 rounded-2xl">
+                    <Award className="text-blue-600" size={18} />
+                  </div>
+
+                  <div>
+                    <p className="font-bold text-gray-900 text-sm">
+                      Top Seller
+                    </p>
+
+                    <p className="text-xs text-gray-500">
+                      Más de 1,000 ventas
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3">
+
+                  <div className="bg-green-100 p-3 rounded-2xl">
+                    <CheckCircle className="text-green-600" size={18} />
+                  </div>
+
+                  <div>
+                    <p className="font-bold text-gray-900 text-sm">
+                      Verificación completa
+                    </p>
+
+                    <p className="text-xs text-gray-500">
+                      Identidad confirmada
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+    
+          </div>
         </div>
       </div>
     </div>

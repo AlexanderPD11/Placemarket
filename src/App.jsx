@@ -20,6 +20,8 @@ import ReporteIngresos from './pages/ReporteIngresos'
 import CentroSoporte from './pages/CentroSoporte'
 import Demo from './pages/Demo'
 import VerificacionVendedor from './pages/VerificacionVendedor'
+import TestUI from './pages/TestUI'
+import VendorDashboard from './pages/VendorDashboard'
 
 function LandingPage() {
   return (
@@ -53,6 +55,8 @@ function App() {
       <Route path="/admin/soporte" element={<CentroSoporte />} />
       <Route path="/demo" element={<Demo />} />
      <Route path="/verificacion" element={<VerificacionVendedor />} />
+     <Route path="/test-ui" element={<TestUI />} />
+     <Route path="/vendor-dashboard" element={<VendorDashboard />} />
     </Routes>
   )
 }

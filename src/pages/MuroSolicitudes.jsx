@@ -1,194 +1,462 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { Search, Bell, ShoppingBag, MapPin, Clock, Eye } from 'lucide-react'
+
+import {
+  Search,
+  SlidersHorizontal,
+  MapPin,
+  Clock3,
+  Wallet,
+  Sparkles,
+  BadgeCheck,
+  Briefcase,
+  ArrowUpRight,
+  Grid3X3,
+  Rows3,
+  Star,
+} from 'lucide-react'
 
 const solicitudes = [
   {
     id: 1,
-    badge: 'NUEVO REQUERIMIENTO',
-    badgeColor: 'bg-blue-100 text-blue-600',
-    tiempo: 'Hace 15 min',
-    presupuesto: '28.500',
-    titulo: 'Busco Toyota Corolla 2022 Hybrid',
-    categoria: 'Vehiculos',
-    subcategoria: 'Ocasion',
-    ubicacion: 'Santo Domingo (Zona Norte)',
-    descripcion: 'Busco una unidad bien cuidada, preferiblemente acabado Sport o Style Plus. Menos de 40.000km y con historial de revisiones.',
-    vendedores: 4,
-    creditos: 5,
-    img: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=300&q=80'
+    titulo: 'Toyota Corolla 2022',
+    categoria: 'Vehículos',
+    descripcion:
+      'Busco Toyota Corolla 2022 automático en excelente estado.',
+    ubicacion: 'Santo Domingo',
+    presupuesto: 'RD$950,000',
+    urgencia: 'Urgente',
+    ofertas: 12,
+    premium: true,
   },
   {
     id: 2,
-    badge: 'URGENTE',
-    badgeColor: 'bg-orange-100 text-orange-600',
-    tiempo: 'Hace 3 horas',
-    presupuesto: '450.000',
-    titulo: 'Busco Casa en zona norte',
-    categoria: 'Inmobiliaria',
-    subcategoria: 'Compra',
-    ubicacion: 'Santo Domingo Oeste',
-    descripcion: 'Familia busca chalet adosado o piso amplio con terraza. Minimo 3 habitaciones y 2 banos. Valoramos cercania a transporte publico.',
-    vendedores: 128,
-    creditos: 15,
-    img: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=300&q=80'
+    titulo: 'Diseñador UX/UI',
+    categoria: 'Servicios',
+    descripcion:
+      'Necesitamos rediseño moderno para aplicación fintech.',
+    ubicacion: 'Santiago',
+    presupuesto: 'RD$80,000',
+    urgencia: 'Moderado',
+    ofertas: 7,
+    premium: false,
   },
   {
     id: 3,
-    badge: 'NUEVO REQUERIMIENTO',
-    badgeColor: 'bg-blue-100 text-blue-600',
-    tiempo: 'Hace 5 horas',
-    presupuesto: '1.200',
-    titulo: 'Busco iPhone 15 Pro Max 256GB',
-    categoria: 'Tecnologia',
-    subcategoria: 'Electronica',
-    ubicacion: 'Santiago',
-    descripcion: 'Busco iPhone 15 Pro Max en color titanio natural o negro. Preferiblemente nuevo o como nuevo con garantia.',
-    vendedores: 12,
-    creditos: 3,
-    img: 'https://images.unsplash.com/photo-1498049794561-7780e7231661?w=300&q=80'
-  }
+    titulo: 'Laptop para diseño gráfico',
+    categoria: 'Tecnología',
+    descripcion:
+      'Busco MacBook Pro o laptop equivalente para Adobe Suite.',
+    ubicacion: 'Punta Cana',
+    presupuesto: 'RD$120,000',
+    urgencia: 'Flexible',
+    ofertas: 4,
+    premium: true,
+  },
 ]
 
-const categoriasFiltro = ['Todo', 'Vehiculos', 'Inmuebles', 'Tecnologia', 'Reformas', 'Servicios']
-
 function MuroSolicitudes() {
-  const [categoriaActiva, setCategoriaActiva] = useState('Todo')
-  const [presupuesto, setPresupuesto] = useState('cualquiera')
+
+  const [vistaGrid, setVistaGrid] = useState(true)
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <nav className="bg-white border-b border-gray-100 px-6 py-3 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <Link to="/" className="flex items-center gap-3">
-        <div className="bg-blue-600 text-white p-1.5 rounded-lg">
-        <ShoppingBag size={16} />
-        </div>
-        <div>
-    <span className="font-black text-gray-900">Placemarket</span>
-    <p className="text-xs text-gray-400">Panel Vendedor</p>
-  </div>
-</Link>
-        </div>
-        <div className="flex items-center gap-3 bg-gray-100 rounded-full px-4 py-2 w-80">
-          <Search size={16} className="text-gray-400" />
-          <input type="text" placeholder="¿Qué estás buscando vender hoy?..." className="bg-transparent text-sm outline-none flex-1 text-gray-600" />
-        </div>
-        <div className="flex items-center gap-4">
-          <div className="bg-gray-100 rounded-full px-4 py-2 text-center">
-            <p className="text-xs text-gray-400 uppercase font-bold">Saldo Actual</p>
-            <p className="text-sm font-black text-gray-900">850 Creditos</p>
-          </div>
-          <button className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-1">
-            + Recargar
-          </button>
-          <Bell size={20} className="text-gray-400" />
-          <div className="w-8 h-8 bg-gray-300 rounded-full"></div>
-        </div>
-      </nav>
 
-      <div className="flex">
-        <aside className="w-64 min-h-screen bg-white border-r border-gray-100 p-6 shrink-0">
-          <h3 className="font-bold text-gray-900 flex items-center gap-2 mb-6">
-            Filtros Avanzados
+    <div className="min-h-screen bg-gray-50 flex">
+
+      {/* SIDEBAR */}
+
+      <aside className="w-64 bg-white border-r border-gray-100 min-h-screen fixed left-0 top-0 p-6">
+
+        <div className="flex items-center gap-3 mb-10">
+
+          <div className="bg-blue-600 text-white p-2 rounded-2xl">
+            <Briefcase size={18} />
+          </div>
+
+          <div>
+
+            <h2 className="font-black text-gray-900">
+              Placemarket
+            </h2>
+
+            <p className="text-xs text-gray-500">
+              Muro de Solicitudes
+            </p>
+
+          </div>
+
+        </div>
+
+        <div className="space-y-2">
+
+          {[
+            'Todas las solicitudes',
+            'Vehículos',
+            'Tecnología',
+            'Servicios',
+            'Hogar',
+            'Propiedades',
+          ].map((item, i) => (
+
+            <button
+              key={i}
+              className={`
+                w-full
+                text-left
+                px-4
+                py-3
+                rounded-2xl
+                text-sm
+                font-medium
+                transition
+
+                ${
+                  i === 0
+                    ? 'bg-blue-50 text-blue-600'
+                    : 'text-gray-600 hover:bg-gray-50'
+                }
+              `}
+            >
+              {item}
+            </button>
+
+          ))}
+
+        </div>
+
+        {/* PRO CARD */}
+
+        <div className="mt-10 bg-gray-900 rounded-3xl p-5 text-white">
+
+          <span className="bg-blue-600 px-2 py-1 rounded-full text-xs font-bold">
+            PRO
+          </span>
+
+          <h3 className="text-xl font-black mt-4">
+            Obtén más solicitudes
           </h3>
-          <div className="mb-6">
-            <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-3">Categorias de Interes</p>
-            {['Vehiculos', 'Inmobiliaria', 'Electronica', 'Servicios Hogar'].map((cat) => (
-              <label key={cat} className="flex items-center gap-2 mb-2 cursor-pointer">
-                <input type="checkbox" defaultChecked={cat === 'Vehiculos' || cat === 'Electronica'} className="accent-blue-600" />
-                <span className="text-sm text-gray-600">{cat}</span>
-              </label>
-            ))}
-          </div>
-          <div className="mb-6">
-            <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-3">Presupuesto del Comprador</p>
-            {['Cualquier presupuesto', 'Menos de $5.000', '$5.000 - $50.000'].map((op) => (
-              <label key={op} className="flex items-center gap-2 mb-2 cursor-pointer">
-                <input type="radio" name="presupuesto" defaultChecked={op === 'Cualquier presupuesto'} className="accent-blue-600" />
-                <span className="text-sm text-gray-600">{op}</span>
-              </label>
-            ))}
-          </div>
-          <div className="mb-6">
-            <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-3">Ubicacion</p>
-            <select className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm outline-none focus:border-blue-400 bg-white">
-              <option>Toda la Republica</option>
-              <option>Santo Domingo</option>
-              <option>Santiago</option>
-            </select>
-          </div>
-          <button className="w-full bg-gray-900 text-white py-3 rounded-xl text-sm font-semibold hover:bg-gray-800 transition">
-            Aplicar Filtros
+
+          <p className="text-gray-400 text-sm mt-2 leading-relaxed">
+            Destaca tus ofertas y aumenta tus oportunidades.
+          </p>
+
+          <button className="w-full mt-5 bg-blue-600 py-3 rounded-2xl font-semibold hover:bg-blue-700 transition">
+            Mejorar cuenta
           </button>
-          <div className="mt-6 bg-blue-600 rounded-2xl p-4 text-white">
-            <h4 className="font-bold mb-2">Potencia tus ventas</h4>
-            <p className="text-xs text-blue-200 mb-3">Accede a requerimientos premium antes que nadie con una suscripcion PRO.</p>
-            <button className="w-full bg-white text-blue-600 py-2 rounded-xl text-sm font-semibold">Saber mas</button>
-          </div>
-        </aside>
 
-        <main className="flex-1 p-8">
-          <div className="flex justify-between items-center mb-2">
+        </div>
+
+      </aside>
+
+      {/* MAIN */}
+
+      <main className="flex-1 ml-64">
+
+        {/* TOPBAR */}
+
+        <div className="bg-white border-b border-gray-100 px-8 py-5 sticky top-0 z-20">
+
+          <div className="flex items-center justify-between">
+
             <div>
-              <h1 className="text-2xl font-black text-gray-900">Muro de Solicitudes</h1>
-              <p className="text-sm text-gray-500 flex items-center gap-1 mt-1">
-                <span className="w-2 h-2 bg-green-500 rounded-full inline-block"></span>
-                Hay {solicitudes.length * 47} compradores buscando productos en este momento
+
+              <h1 className="text-3xl font-black text-gray-900">
+                Muro de Solicitudes
+              </h1>
+
+              <p className="text-gray-500 mt-1">
+                Encuentra clientes buscando exactamente lo que ofreces.
               </p>
-            </div>
-            <div className="flex gap-2">
-              <button className="bg-gray-900 text-white px-4 py-2 rounded-full text-sm font-semibold">Mas Recientes</button>
-              <button className="border border-gray-200 text-gray-600 px-4 py-2 rounded-full text-sm font-semibold hover:border-blue-400 transition">Urgentes</button>
-            </div>
-          </div>
 
-          <div className="flex gap-2 mb-6 mt-4 flex-wrap">
-            {categoriasFiltro.map((cat) => (
+            </div>
+
+            <div className="flex items-center gap-3">
+
               <button
-                key={cat}
-                onClick={() => setCategoriaActiva(cat)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition ${categoriaActiva === cat ? 'bg-blue-600 text-white' : 'border border-gray-200 text-gray-600 hover:border-blue-400'}`}
+                onClick={() => setVistaGrid(true)}
+                className={`
+                  w-11
+                  h-11
+                  rounded-2xl
+                  flex
+                  items-center
+                  justify-center
+                  transition
+
+                  ${
+                    vistaGrid
+                      ? 'bg-blue-600 text-white'
+                      : 'bg-white border border-gray-200 text-gray-500'
+                  }
+                `}
               >
-                {cat}
+                <Grid3X3 size={18} />
               </button>
-            ))}
+
+              <button
+                onClick={() => setVistaGrid(false)}
+                className={`
+                  w-11
+                  h-11
+                  rounded-2xl
+                  flex
+                  items-center
+                  justify-center
+                  transition
+
+                  ${
+                    !vistaGrid
+                      ? 'bg-blue-600 text-white'
+                      : 'bg-white border border-gray-200 text-gray-500'
+                  }
+                `}
+              >
+                <Rows3 size={18} />
+              </button>
+
+            </div>
+
           </div>
 
-          <div className="space-y-4">
-            {solicitudes.map((s) => (
-              <div key={s.id} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex gap-4">
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className={`text-xs font-bold px-2 py-1 rounded-full ${s.badgeColor}`}>{s.badge}</span>
-                    <span className="text-xs text-gray-400 flex items-center gap-1"><Clock size={12} /> {s.tiempo}</span>
-                    <span className="ml-auto text-xs text-gray-400 uppercase font-bold">Presupuesto Max.</span>
-                  </div>
-                  <div className="flex justify-between items-start">
-                    <h3 className="text-lg font-black text-gray-900">{s.titulo}</h3>
-                    <span className="text-2xl font-black text-gray-900 ml-4">${s.presupuesto}</span>
-                  </div>
-                  <div className="flex items-center gap-3 mt-2 text-xs text-gray-500">
-                    <span className="flex items-center gap-1"><ShoppingBag size={12} /> {s.categoria} • {s.subcategoria}</span>
-                    <span className="flex items-center gap-1"><MapPin size={12} /> {s.ubicacion}</span>
-                  </div>
-                  <p className="text-sm text-gray-500 mt-3 leading-relaxed">{s.descripcion}</p>
-                  <div className="flex items-center justify-between mt-4">
-                    <span className="text-xs text-gray-400 flex items-center gap-1">
-                      <Eye size={12} /> {s.vendedores} vendedores ya han ofertado
-                    </span>
-                    <button className="bg-blue-600 text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-blue-700 transition flex items-center gap-2">
-                      Ofertar ahora
-                      <span className="bg-blue-500 rounded-full px-2 py-0.5 text-xs">{s.creditos}</span>
-                    </button>
-                  </div>
-                </div>
-                <img src={s.img} alt={s.titulo} className="w-32 h-32 rounded-xl object-cover shrink-0" />
-              </div>
-            ))}
+          {/* SEARCH */}
+
+          <div className="flex gap-4 mt-6">
+
+            <div className="flex-1 relative">
+
+              <Search
+                size={18}
+                className="absolute left-5 top-4 text-gray-400"
+              />
+
+              <input
+                type="text"
+                placeholder="Buscar solicitudes..."
+                className="
+                  w-full
+                  bg-gray-50
+                  border
+                  border-gray-200
+                  rounded-2xl
+                  pl-12
+                  pr-5
+                  py-4
+                  outline-none
+                  focus:border-blue-400
+                "
+              />
+
+            </div>
+
+            <button
+              className="
+                flex
+                items-center
+                gap-2
+                border
+                border-gray-200
+                bg-white
+                px-5
+                rounded-2xl
+                hover:border-blue-400
+                transition
+              "
+            >
+
+              <SlidersHorizontal size={18} />
+
+              Filtros
+
+            </button>
+
           </div>
-        </main>
-      </div>
+
+        </div>
+
+        {/* CONTENT */}
+
+        <div className="p-8">
+
+          {/* STATS */}
+
+          <div className="grid grid-cols-4 gap-5 mb-8">
+
+            {[
+              {
+                label: 'Solicitudes activas',
+                value: '1,284',
+              },
+              {
+                label: 'Nuevas hoy',
+                value: '84',
+              },
+              {
+                label: 'Ofertas enviadas',
+                value: '27',
+              },
+              {
+                label: 'Tasa de éxito',
+                value: '68%',
+              },
+            ].map((item) => (
+
+              <div
+                key={item.label}
+                className="
+                  bg-white
+                  border
+                  border-gray-100
+                  rounded-3xl
+                  p-6
+                  shadow-sm
+                "
+              >
+
+                <p className="text-sm text-gray-500 mb-2">
+                  {item.label}
+                </p>
+
+                <h3 className="text-3xl font-black text-gray-900">
+                  {item.value}
+                </h3>
+
+              </div>
+
+            ))}
+
+          </div>
+
+          {/* SOLICITUDES */}
+
+          <div
+            className={`
+              ${
+                vistaGrid
+                  ? 'grid grid-cols-2 gap-6'
+                  : 'space-y-5'
+              }
+            `}
+          >
+
+            {solicitudes.map((item) => (
+
+              <div
+                key={item.id}
+                className="
+                  bg-white
+                  border
+                  border-gray-100
+                  rounded-[32px]
+                  p-7
+                  shadow-sm
+                  hover:shadow-xl
+                  transition-all
+                  hover:-translate-y-1
+                "
+              >
+
+                <div className="flex items-start justify-between mb-6">
+
+                  <div>
+
+                    <div className="flex items-center gap-2 mb-3">
+
+                      <span className="bg-blue-50 text-blue-600 text-xs font-bold px-3 py-1 rounded-full">
+                        {item.categoria}
+                      </span>
+
+                      {item.premium && (
+
+                        <span className="bg-yellow-50 text-yellow-600 text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1">
+
+                          <Sparkles size={12} />
+
+                          Premium
+
+                        </span>
+
+                      )}
+
+                    </div>
+
+                    <h2 className="text-2xl font-black text-gray-900">
+                      {item.titulo}
+                    </h2>
+
+                  </div>
+
+                  <button className="w-11 h-11 rounded-2xl border border-gray-200 flex items-center justify-center hover:border-blue-400 transition">
+
+                    <ArrowUpRight size={18} />
+
+                  </button>
+
+                </div>
+
+                <p className="text-gray-600 leading-relaxed mb-6">
+                  {item.descripcion}
+                </p>
+
+                <div className="space-y-4 mb-7">
+
+                  <div className="flex items-center gap-3 text-sm text-gray-500">
+
+                    <MapPin size={16} />
+
+                    {item.ubicacion}
+
+                  </div>
+
+                  <div className="flex items-center gap-3 text-sm text-gray-500">
+
+                    <Wallet size={16} />
+
+                    {item.presupuesto}
+
+                  </div>
+
+                  <div className="flex items-center gap-3 text-sm text-gray-500">
+
+                    <Clock3 size={16} />
+
+                    {item.urgencia}
+
+                  </div>
+
+                </div>
+
+                <div className="flex items-center justify-between pt-6 border-t border-gray-100">
+
+                  <div className="flex items-center gap-2 text-sm text-gray-500">
+
+                    <Star
+                      size={16}
+                      className="text-yellow-400 fill-yellow-400"
+                    />
+
+                    {item.ofertas} ofertas recibidas
+
+                  </div>
+
+                  <button className="bg-blue-600 text-white px-5 py-3 rounded-2xl text-sm font-semibold hover:bg-blue-700 transition flex items-center gap-2">
+
+                    Enviar oferta
+
+                    <BadgeCheck size={16} />
+
+                  </button>
+
+                </div>
+
+              </div>
+
+            ))}
+
+          </div>
+
+        </div>
+
+      </main>
+
     </div>
   )
 }
