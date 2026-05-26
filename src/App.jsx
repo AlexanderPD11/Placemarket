@@ -25,7 +25,7 @@ import VendorDashboard from './pages/vendor/VendorDashboard'
 import DetalleSolicitud from './pages/vendor/DetalleSolicitud'
 import EnviarOferta from './pages/vendor/EnviarOferta'
 import MisOfertas from './pages/vendor/MisOfertas'
-import Configuracion from './pages/Vendor/Configuracion'
+import Configuracion from './pages/vendor/Configuracion'
 
 function LandingPage() {
   return (
