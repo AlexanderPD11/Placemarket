@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
+import { lazy, Suspense } from 'react'
 import Navbar from './components/landing/Navbar'
 import Hero from './components/landing/Hero'
 import HowItWorks from './components/landing/HowItWorks'
@@ -21,11 +22,17 @@ import CentroSoporte from './pages/CentroSoporte'
 import Demo from './pages/Demo'
 import VerificacionVendedor from './pages/vendor/VerificacionVendedor'
 import TestUI from './pages/TestUI'
-import VendorDashboard from './pages/vendor/VendorDashboard'
+const VendorDashboard = lazy(() =>
+  import('./pages/Vendor/VendorDashboard')
+)
 import DetalleSolicitud from './pages/vendor/DetalleSolicitud'
 import EnviarOferta from './pages/vendor/EnviarOferta'
-import MisOfertas from './pages/vendor/MisOfertas'
-import Configuracion from './pages/vendor/Configuracion'
+const MisOfertas = lazy(() =>
+  import('./pages/Vendor/MisOfertas')
+)
+const Configuracion = lazy(() =>
+  import('./pages/Vendor/Configuracion')
+)
 
 function LandingPage() {
   return (
@@ -43,6 +50,7 @@ function LandingPage() {
 
 function App() {
   return (
+    <Suspense fallback={<div>Cargando...</div>}>
     <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route path="/publicar" element={<PublicarNecesidad />} />
@@ -66,6 +74,7 @@ function App() {
      <Route path="/mis-ofertas" element={<MisOfertas />} />
      <Route path="/configuracion" element={<Configuracion />} />
     </Routes>
+    </Suspense>
   )
 }
 
